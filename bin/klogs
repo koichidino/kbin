@@ -1,0 +1,15 @@
+#!/bin/bash
+
+help_info()
+{
+  echo "===========================================";
+  echo "[usage]: ";
+  echo "klogs [namespace] [pods] [tail line]"
+  echo "===========================================";
+}
+if [ "$1" == "" ]; then
+  echo "you need to specify namespace(dev, staging, beta, production)"
+  help_info;
+else
+  kubectl logs $2 --namespace=$1 --tail=$3 -f --timestamps
+fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+help_info()
+{
+  echo "===========================================";
+  echo "[usage]: ";
+  echo "krestart [env][deployment]"
+  echo "===========================================";
+}
+# 其實這就是改環境變數
+# 所以要換環境參數也可以用這樣的指令
+# 例如：kubectl set env deployment/qc-17life NODE_ENV="dev" -n=dev
+date=$(date '+%Y%m%d%H%M')
+if [ "$1" == "" ]; then
+  echo "you need to specify namespace(dev, staging, beta, production)"
+  help_info;
+elif [ "$1" = "qpointss" ]; then
+  kubectl set env deployment/$2 RESTART_POD_COUNT="${date}" -n=$1
+#else
+  # kubectl set env deployment/$2 RESTART_POD_COUNT="1" -n=$1
+fi
