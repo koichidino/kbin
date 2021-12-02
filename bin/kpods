@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ "$1" == "" ]; then
+  echo "you need to specify namespace(dev, staging, beta, production)"
+else
+  kubectl get pods --namespace=$1 -o wide
+fi
