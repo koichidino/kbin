@@ -8,7 +8,6 @@ echo ""
 # set PATH so it includes user's private bin if it exists
 
 if [ -d "$INSTALL_PATH/bin" ] ; then
-  echo 'INSTALL_PATH=$( cd $(dirname $0); pwd )' >> ~/.bashrc
-  echo 'export PATH="$INSTALL_PATH/bin:$PATH"' >> ~/.bashrc
+  echo 'export PATH="'$INSTALL_PATH'/bin:$PATH"' >> ~/.bashrc
   source ~/.bashrc
 fi
